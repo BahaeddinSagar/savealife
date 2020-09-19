@@ -5,7 +5,10 @@ class FirebaseClass {
   static final _firestore = Firestore.instance;
   static final _fireAuth = FirebaseAuth.instance;
 
-  Future<FirebaseUser> login({String email, String password}) async {
+  Future<FirebaseUser> login({
+    String email,
+    String password,
+  }) async {
     try {
       var user = await _fireAuth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -16,10 +19,34 @@ class FirebaseClass {
     }
   }
 
-  Future<FirebaseUser> signup({String email, String password}) async {
+  Future<FirebaseUser> signup({
+    String email,
+    String password,
+    String phoneNumber,
+    String phone,
+    String city,
+    String country,
+    bool isHelper,
+  }) async {
     try {
       var user = await _fireAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+      if (isHelper) {
+        _firestore.collection("helpers").add({
+          "userid": user.user.uid,
+          "phoneNumber": phone,
+          "city": city,
+          "country": country
+        });
+      } else {
+        _firestore.collection("users").document(user.user.uid).setData({
+          "userid": user.user.uid,
+          "phoneNumber": phone,
+          "city": city,
+          "country": country
+        });
+      }
+
       return user.user;
     } on Exception catch (e) {
       print(e.toString());
@@ -40,13 +67,15 @@ class FirebaseClass {
       String country,
       String type,
       String whoIsInjured,
-      GeoPoint location}) {
+      GeoPoint location,
+      String userid}) {
     _firestore.collection("emergencies").add({
       "city": city,
       "country": country,
       "type": type,
       "location": location,
-      whoIsInjured: whoIsInjured
+      "sentBy": userid,
+      "whoIsInjured": whoIsInjured
     }).then((value) {
       print('done');
     }).catchError((error) {
