@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "713263015741",
+    "firebase_url": "https://savealife-f1bb1.firebaseio.com",
+    "project_id": "savealife-f1bb1",
+    "storage_bucket": "savealife-f1bb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713263015741:android:e1dfa1a541cd58a1338754",
+        "android_client_info": {
+          "package_name": "com.savealife.savealife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713263015741-3m3uq0efpei18t1b55rs731nnlb6htaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSSpxx0AQDrInKGphn0PAjxhYicx3CodY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713263015741-3m3uq0efpei18t1b55rs731nnlb6htaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
